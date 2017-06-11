@@ -1,0 +1,41 @@
+<html>
+	{% with messages = get_flashed_messages() %}
+         {% if messages %}
+            <ul>
+               {% for message in messages %}
+                  <p>{{ message }}</p>
+               {% endfor %}
+            </ul>
+         {% endif %}
+      {% endwith %}
+    <h1>Add Data</h1>
+	<form action="/add" method="post">
+		<div>
+			<label for="">Subject</label>
+			<input type="text" name="subject">
+		</div>
+		<div>
+			<label for="">Content</label>
+			<input type="text" name="content">
+		</div>
+		<div>
+			<input type="submit">
+		</div>
+	</form>
+	<a href="/view">See All Records</a>
+	<br><br>
+	<h1>Search Data</h1>
+	<form action="/search" method="post">
+		<div>
+			<label for="">Text to search</label>
+			<input type="text" name="search_positive">
+		</div>
+		<div>
+			<label for="">Don't include these words</label> (followed by "-" and separate by "space")
+			<input type="text" name="search_negative" placeholder="-dont -include -these">
+		</div>
+		<div>
+			<input type="submit" value="Search">
+		</div>
+	</form>
+</html>
